@@ -7,7 +7,7 @@ from copy import deepcopy
 from ray.air import Checkpoint, session
 
 from model import MDAB_1D
-from load_data_MDAB import load_data_1D, load_data
+from load_data_MDAB import load_data_1D, load_data_1D_impute
 
 def train_module(config, data_dir, input_size, feature_type, dim):
     # Set the device
@@ -15,7 +15,7 @@ def train_module(config, data_dir, input_size, feature_type, dim):
     
     # Load data using load_data()
     if(dim == "1D"):
-        _, X_train_tensor, y_train_tensor, d_train_tensor, b_train_tensor, X_test_tensor, y_test_tensor, d_test_tensor, b_test_tensor, X_all_tensor, _, _, _, _ = load_data_1D(data_dir, input_size, feature_type) 
+        _, X_train_tensor, y_train_tensor, d_train_tensor, b_train_tensor, X_test_tensor, y_test_tensor, d_test_tensor, b_test_tensor, X_all_tensor, _, _, _, _ = load_data_1D_impute(data_dir, input_size, feature_type) 
         model = MDAB_1D(input_size=input_size, num_class=2, num_domain=2, num_batch=2,
                     out1=config["out1"], out2=config["out2"], 
                     conv1=config["conv1"], pool1=config["pool1"], drop1=config["drop1"], 

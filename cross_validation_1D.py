@@ -11,7 +11,7 @@ from sklearn.model_selection import KFold
 from copy import deepcopy
 
 from model import MDAB_1D
-from load_data_MDAB import load_data_1D   
+from load_data_MDAB import load_data_1D_impute   
     
 class MDABwithCV_1D(MDAB_1D):
     def __init__(self, config, input_size, num_class, num_domain, num_batch):
@@ -46,7 +46,7 @@ class MDABwithCV_1D(MDAB_1D):
         self.feature_type=feature_type
         self.R01BTuning=R01BTuning
                     
-        data, X_train_tensor, y_train_tensor, d_train_tensor, b_train_tensor, X_test_tensor, y_test_tensor, _, _, X_all_tensor, y_all_tensor, _, _, train_sampleid = load_data_1D(data_dir, input_size, feature_type) 
+        data, X_train_tensor, y_train_tensor, d_train_tensor, b_train_tensor, X_test_tensor, y_test_tensor, _, _, X_all_tensor, y_all_tensor, _, _, train_sampleid = load_data_1D_impute(data_dir, input_size, feature_type) 
         self.data_idonly=data[["SampleID","Train_Group"]]
         self.X_train_tensor=X_train_tensor
         self.y_train_tensor=y_train_tensor
@@ -227,3 +227,7 @@ class MDABwithCV_1D(MDAB_1D):
                             'SampleID': all_sampleid})
 
         df.to_csv(f"{output_path}/{self.feature_type}_CV_score.csv", index=False)
+        
+        
+        
+        

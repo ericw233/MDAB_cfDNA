@@ -1,8 +1,8 @@
 #!/bin/bash
 feature_type_list=(Frag Arm Griffin Cnv MCMS)
 input_size=(1200 950 2600 2500 200)
-for i in {0..4}
+for i in {0..0}
 do
-    python ./MDAB_run.py ${feature_type_list[i]} 1D ${input_size[i]} 50 500 /mnt/binf/eric/MDAB_JulyResults/MDAB_1D_cluster_0725 /mnt/binf/eric/Mercury_June2023_new/Feature_all_June2023_R01BMatch_ClusterKAG9v2_SeqBatchTrainValid2.csv
+    python ./MDAB_run.py ${feature_type_list[i]} 1D ${input_size[i]} 50 1000 /mnt/binf/eric/MDAB_JulyResults/MDAB_1D_cluster_0726 /mnt/binf/eric/Mercury_June2023_new/Feature_all_June2023_R01BMatch_ClusterKAG9v2_SeqBatchTrainValid2.csv
 done
 

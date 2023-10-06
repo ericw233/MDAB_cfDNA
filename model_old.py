@@ -30,7 +30,6 @@ class MDAB_1D(nn.Module):
             nn.ReLU(),
             nn.Dropout(drop3),
             nn.Linear(fc1, fc2),
-            nn.ReLU(),
             nn.Linear(fc2, 1),
             nn.Sigmoid()
         )
@@ -40,21 +39,17 @@ class MDAB_1D(nn.Module):
             nn.Linear(self.fc_input_size, fc1),
             nn.ReLU(),
             nn.Dropout(drop3),
-            nn.Linear(fc1, fc1),
-            nn.ReLU(),
             nn.Linear(fc1, fc2),
-            nn.ReLU(),
             nn.Linear(fc2, 1),
             nn.Sigmoid()
         )
         
-        # batch classifier
+        # Domain classifier
         self.batch_classifier = nn.Sequential(
             nn.Linear(self.fc_input_size, fc1),
             nn.ReLU(),
             nn.Dropout(drop3),
             nn.Linear(fc1, fc2),
-            nn.ReLU(),
             nn.Linear(fc2, 3),
             nn.Softmax()
         )

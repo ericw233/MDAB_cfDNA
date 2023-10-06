@@ -5,17 +5,17 @@ from load_data import load_data_1D
 from sklearn.metrics import roc_auc_score
 
 ### specify feature type and input size
-input_size = 200
-feature_type = "MCMS"
+input_size = 1200
+feature_type = "Frag"
 num_class = 2
 num_domain = 2
-data_dir="/mnt/binf/eric/Mercury_June2023_new/Feature_all_June2023_R01BMatch_Domain.csv"
+data_dir="/mnt/binf/eric/Mercury_June2023_new/Feature_all_June2023_R01BMatchv2_ClusterKAG9v1_SeqBatchAll.csv"
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 ##### load best_config from text
 # Specify the path to the text file
-config_file = f'/mnt/binf/eric/DANN_JulyResults/DANN_1D_0712/{feature_type}_config.txt'
-model_file = f'/mnt/binf/eric/DANN_JulyResults/DANN_1D_0712/{feature_type}_DANN_1D_BestRayTune.pt'
+config_file = f'/mnt/binf/eric/DANN_JulyResults/DANN_1D_modelL3_0802/{feature_type}_config.txt'
+model_file = f'/mnt/binf/eric/DANN_JulyResults/DANN_1D_modelL3_0802/{feature_type}_DANN_1D_BestRayTune.pt'
 
 with open(config_file, 'r') as cf:
     config_txt = cf.read()

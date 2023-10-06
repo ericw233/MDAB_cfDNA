@@ -18,14 +18,14 @@ from train_and_tune_1D import MDABwithTrainingTuning_1D
 from cross_validation_1D import MDABwithCV_1D
 
 # default value of input_size and feature_type
-feature_type = "Griffin"
+feature_type = "MCMS"
 dim = "1D"
-input_size = 2600
+input_size = 200
 tuning_num = 20
 epoch_num = 200
-output_path="/mnt/binf/eric/MDAB_JulyResults/MDAB1D_0721"
-data_dir="/mnt/binf/eric/Mercury_June2023_new/Feature_all_June2023_R01BMatch_ClusterKAG9_SeqBatch.csv"
-config_file = f"/mnt/binf/eric/MDAB_JulyResults/MDAB_1D_cluster_0721/{feature_type}_config.txt"
+output_path="/mnt/binf/eric/MDAB_JulyResults/MDAB_1D_cluster_0725"
+data_dir="/mnt/binf/eric/Mercury_June2023_new/Feature_all_June2023_R01BMatch_ClusterKAG9v2_SeqBatchTrainValid2.csv"
+
 
 best_config={'out1': 32, 'out2': 128, 'conv1': 3, 'pool1': 2, 'drop1': 0.0, 
              'conv2': 4, 'pool2': 1, 'drop2': 0.4, 'fc1': 128, 'fc2': 32, 'drop3': 0.2, 'batch_size': 128, 'num_epochs': 500, 
@@ -54,6 +54,7 @@ num_class = 2
 num_domain = 2
 num_batch = 2
 output_path_cv=f"{output_path}_cv"
+config_file = f"{output_path}/{feature_type}_config.txt"
 
 try:
     best_config, best_testloss=ray_tune(num_samples=tuning_num, 

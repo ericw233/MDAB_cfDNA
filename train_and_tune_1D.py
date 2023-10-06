@@ -9,7 +9,7 @@ import os
 import inspect
 
 from model import MDAB_1D
-from load_data_MDAB import load_data_1D
+from load_data_MDAB import load_data_1D_impute
 
 
 class MDABwithTrainingTuning_1D(MDAB_1D):
@@ -46,7 +46,7 @@ class MDABwithTrainingTuning_1D(MDAB_1D):
         self.feature_type=feature_type
         self.R01BTuning=R01BTuning
                     
-        data, X_train_tensor, y_train_tensor, d_train_tensor, b_train_tensor, X_test_tensor, y_test_tensor, _, _, X_all_tensor, y_all_tensor, _, _, train_sampleid = load_data_1D(data_dir, input_size, feature_type) 
+        data, X_train_tensor, y_train_tensor, d_train_tensor, b_train_tensor, X_test_tensor, y_test_tensor, _, _, X_all_tensor, y_all_tensor, _, _, train_sampleid = load_data_1D_impute(data_dir, input_size, feature_type) 
         self.data_idonly=data[["SampleID","Train_Group"]]
         self.X_train_tensor=X_train_tensor
         self.y_train_tensor=y_train_tensor
